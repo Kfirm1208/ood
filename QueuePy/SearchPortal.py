@@ -52,7 +52,7 @@ class SearchPortal:
             if self.findWay(room):
                 return "Found the exit portal."
         
-        return "Cannnot reach the exit portal."
+        return "Cannot reach the exit portal."
     
     def findWay(self, room):
         x,y = self.queue.dequeue()
