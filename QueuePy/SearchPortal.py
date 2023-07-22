@@ -39,7 +39,7 @@ class SearchPortal:
         for row in room:
             if "F" in row:
                 position = (row.index("F"),room.index(row))
-            return position
+                return position
     
     def search(self,room):
         self.queue.enqueue(self.findStart(room))
