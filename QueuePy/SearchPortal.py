@@ -73,10 +73,7 @@ def checkMap(width,height,room):
                 return False
         return len(room) == height
     
-    if check_valid_room(int(width), int(height), room):
-        print(search_portal.search(room))
-    else:
-        print('Invalid map input.')
+    print(search_portal.search(room) if check_valid_room(int(width), int(height), room) else 'Invalid map input.')
         
         
 def main():   
