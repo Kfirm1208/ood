@@ -69,7 +69,7 @@ def checkMap(width,height,room):
     
     def check_valid_room(width,height,room):
         for row in room:
-            if len(row) != width and len(row) != height:
+            if len(row) != width :
                 return False
         return len(room) == height
     
