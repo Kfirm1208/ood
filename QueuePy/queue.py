@@ -1,7 +1,7 @@
 #create the queue class using the inheritance concept
 class Queue(list):
     def enqueue(self, item):
-        self.append(item)
+        super().append(item)
 
     def dequeue(self):
         if not self.is_empty():

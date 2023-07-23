@@ -1,7 +1,7 @@
 # use inheritance concept inherance from list 
 class Stack(list):
     def push(self, item):
-        self.append(item)
+        super().append(item)
 
     def pop(self):
         if not self.is_empty():
