@@ -65,21 +65,16 @@ class LinkedList:
             return 'Out of Range'
 
         if pos is None:
-            popped_data = self.head.data
             self.head = self.head.next
-            return popped_data
         elif pos == 0:
-            popped_data = self.head.data
             self.head = self.head.next
-            return popped_data
         else:
             current = self.head
             for _ in range(pos - 1):
                 if not current.next:
-                    raise IndexError("Out of range")
+                    return 'Out of Range'
                 current = current.next
 
-            popped_data = current.next.data
             current.next = current.next.next
             return "Success"
 
