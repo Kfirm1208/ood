@@ -3,9 +3,11 @@ class Node:
         self.data = data
         self.next = None
     
+    
 class LinkedList:
     def __init__(self):
         self.head = None
+        
         
     def __str__(self):
         if self.isEmpty():
@@ -63,20 +65,23 @@ class LinkedList:
     def pop(self,pos=None):
         if not self.head:
             return 'Out of Range'
-
-        if pos is None:
-            self.head = self.head.next
-        elif pos == 0:
-            self.head = self.head.next
+        
         else:
-            current = self.head
-            for _ in range(pos - 1):
-                if not current.next:
-                    return 'Out of Range'
-                current = current.next
-
-            current.next = current.next.next
-            return "Success"
+            if pos > self.size():
+                return "Out of Range"
+            else: 
+                cur = self.head
+                if pos == 0:
+                    self.head = self.head.next
+                else:
+                    while cur.next:
+                        if pos == 1:
+                            cur.next = cur.next.next
+                        else:
+                            cur = cur.next 
+                    cur.next = None
+            return 'Success'
+                        
 
 if __name__ == "__main__":
     L = LinkedList()
