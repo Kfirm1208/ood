@@ -30,9 +30,34 @@ class BST:
             self.printTree(node.right, level + 1)
             print('     ' * level, node)
             self.printTree(node.left, level + 1)
-            
+
+traversal = []
+
+def findBelow(tree,val):
+    #Depth-First Order : InOrder
+    inOrder(tree.root)
+    below = ''
+    for i in traversal :
+        if i < val:
+            below += str(i)
+            below += ' '
+    return below
+    
+def inOrder(root):
+    if root is not None :
+        # Left Subtree
+        inOrder(root.left)
+        #Root 
+        traversal.append(root.data)
+        #Right Subtree
+        inOrder(root.right)
+        
 T = BST()
-inp = [int(i) for i in input('Enter Input : ').split()]
-for i in inp:
+inp = input('Enter Input : ').split('|')
+element = [int(i) for i in inp[0].split(' ')]
+for i in element:
     root = T.insert(i)
 T.printTree(T.root)
+print('-' * 50)
+ans = findBelow(T,int(inp[1]))
+print(f'Below {inp[1]} : Not have' if not ans else f'Below {inp[1]} : {ans}')
