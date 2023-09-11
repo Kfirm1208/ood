@@ -19,7 +19,7 @@ class BST:
         if root is None:
             return BST.Node(data)
             
-        if data < root.data:
+        if data <= root.data:
             root.left = BST._insert(root.left,data)
         elif data > root.data:
             root.right = BST._insert(root.right,data)
