@@ -94,7 +94,7 @@ class BinarySearchTree:
                 root.right = self._insert(root.right, data)
         return root
 
-    def delete(self, r, data):
+    def delete(self, data):
         self.root = BinarySearchTree._deleteNodeS(self.root, data)
 
     def _deleteNodeS(root: Node, key: int):
@@ -150,5 +150,5 @@ for command in data:
                 print('Error! Not Found DATA')
                 printTree90(tree.root)
             else:
-                tree.delete(tree.root,data)
+                tree.delete(data)
                 printTree90(tree.root)
