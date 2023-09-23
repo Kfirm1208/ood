@@ -12,7 +12,6 @@ def checkSorted(listnum, i=1):
         return False
     return checkSorted(listnum, i + 1)
 
-
 inp = input("Enter Input : ").split()
 num_list = [int(i) for i in inp]
 print("Yes" if (checkSorted(num_list)) else "No")
