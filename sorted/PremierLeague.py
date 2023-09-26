@@ -52,6 +52,7 @@ class LinkedList:
             fast_ptr = fast_ptr.next.next
 
         return slow_ptr
+    
     def merge(self, left, right):
         dummy_head = Node(0)
         current = dummy_head
