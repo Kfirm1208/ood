@@ -44,7 +44,7 @@ def delMin(h, last):
             break
         
     print(*h)
-    
+
 
 if __name__ == "__main__":
     h = []
