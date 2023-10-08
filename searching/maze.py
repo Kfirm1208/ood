@@ -1,26 +1,34 @@
-# Input: A string in the format "width height, data"
-input_str = input("input : ")
+table, inp = input("input : ").split(",")
+table = list(map(int, table.split()))
+arr = list(map(int, inp.split()))
+row, col = table[0], table[1]
 
-# Split the input into table dimensions and data
-table_str, data_str = input_str.split(',')
-width, height = map(int, table_str.split())
-data = list(map(int, data_str.split()))
+def find_min_index(arr):
+    min_index = 0
+    for i in range(1, len(arr)):
+        if arr[i] < arr[min_index]:
+            min_index = i
+    return min_index
 
-# Define a function to find the minimum index
-find_min_index = lambda arr: min(range(len(arr)), key=lambda i: arr[i])
+def find_max_index_in_row(min_index):
+    max_index = 0
+    for i in range(col):
+        idx = row * min_index + i
+        if idx < len(arr) and arr[idx] > arr[max_index]:
+            max_index = idx
+    return max_index
 
-# Define a function to find the maximum index in a row
-find_max_index_in_row = lambda min_idx: max(range(width), key=lambda i: data[min_idx * width + i] if min_idx * width + i < len(data) else float('-inf'))
 
-# Define a function to find the maximum index in a column
-find_max_index_in_col = lambda max_row_idx: max(range(height), key=lambda i: data[i * width + max_row_idx] if i * width + max_row_idx < len(data) else float('-inf'))
+def find_max_index_in_col(max_idx):
+    max_index = 0
+    for i in range(row):
+        idx = row * i + max_idx
+        if idx < len(arr) and arr[idx] > arr[max_index]:
+            max_index = idx
+    return max_index
 
-# Find the minimum index
-min_idx = find_min_index(data) // width
-
-# Find the maximum index in a row and column
+# Print the results
+min_idx = find_min_index(arr) // col
 row_max_idx = find_max_index_in_row(min_idx)
-col_max_idx = find_max_index_in_col(row_max_idx % height)
-
-# Print the result
-print(data[col_max_idx])
+col_max_idx = find_max_index_in_col(row_max_idx % row)
+print(arr[col_max_idx])
